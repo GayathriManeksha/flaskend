@@ -1,11 +1,13 @@
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db=client.myprojdata
+
+import os
+
+os.environ['MONGO_URI'] = 'mongodb+srv://GayathriManeksha:Gaya3@cluster0.anlc4cj.mongodb.net/?retryWrites=true&w=majority'
+os.environ['MONGO_DB_NAME'] = 'mydatabase'
+
+client = MongoClient(os.environ.get('MONGO_URI'))
+db = client[os.environ.get('MONGO_DB_NAME')]
 data=db.mydata
-# try:
-#     data.insert_one({'Message':'Hey Whats up'})
-# except:
-#     print("error")
 
 val=data.find()
 for v in val:

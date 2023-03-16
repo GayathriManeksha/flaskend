@@ -4,13 +4,17 @@ from pymongo import MongoClient
 from flask_cors import cross_origin
 from bson.json_util import dumps
 from bson.objectid import ObjectId
-client = MongoClient('localhost', 27017)
-db=client.myprojdata
+# client = MongoClient('localhost', 27017)
+# db=client.myprojdata
+from app import db
+
+# client = MongoClient("mongodb+srv://GayathriManeksha:Gaya3@cluster0.anlc4cj.mongodb.net/?retryWrites=true&w=majority")
+# db = client.mydatabase
 data=db.mydata
-# try:
-#     data.insert_one({'Name':'task5'})
-# except:
-#     print("error")
+try:
+    data.insert_one({'Message':'High'})
+except:
+    print("error")
 
 @app.route('/put')
 @cross_origin()
